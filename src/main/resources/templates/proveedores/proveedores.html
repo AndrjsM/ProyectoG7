@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Lista de Proveedores</title>
-</head>
-<body>
-    <h1>Lista de Proveedores</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre Comercial</th>
-                <th>Cédula Jurídica</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Representante</th>
-                <th>Correo Representante</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="proveedor : ${proveedores}">
-                <td th:text="${proveedor.proveedorId}"></td>
-                <td th:text="${proveedor.nombreComercial}"></td>
-                <td th:text="${proveedor.cedJuridica}"></td>
-                <td th:text="${proveedor.direccion}"></td>
-                <td th:text="${proveedor.telefono}"></td>
-                <td th:text="${proveedor.representante}"></td>
-                <td th:text="${proveedor.correoRep}"></td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Lista de Proveedores</title>
+    <head/>
+    <body>
+        <div>
+            <nav  th:replace="~{plantilla :: headerNav}"><nav/>
+        </div>
+        <div class="container m-auto">
+            <h1>Lista de Proveedores</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Comercial</th>
+                        <th>Cédula Jurídica</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Representante</th>
+                        <th>Correo Representante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="proveedor : ${proveedores}">
+                        <td th:text="${proveedor.proveedorId}"></td>
+                        <td th:text="${proveedor.nombreComercial}"></td>
+                        <td th:text="${proveedor.cedJuridica}"></td>
+                        <td th:text="${proveedor.direccion}"></td>
+                        <td th:text="${proveedor.telefono}"></td>
+                        <td th:text="${proveedor.representante}"></td>
+                        <td th:text="${proveedor.correoRep}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

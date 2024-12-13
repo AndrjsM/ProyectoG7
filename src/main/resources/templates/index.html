@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Inicio</title>
-</head>
-<body>
-    <h1>Bienvenido a Veterinaria ProVet</h1>
-    <button onclick="window.location.href='/proveedores'">Ver Proveedores</button>
-</body>
+<html lang="en" data-bs-theme="dark">
+    <head th:insert="~{plantilla :: headPlantilla}"><head/>
+
+    <body>
+        <div>
+            <nav  th:replace="~{plantilla :: headerNav}"><nav/>
+        </div>
+        <div th:insert="~{plantilla :: container1}"/>
+
+    </body>
 </html>
