@@ -20,7 +20,7 @@
                 <ul class="nav me-auto">
                     <li class="nav-item"><a th:href="@{/}" class="nav-link link-body-emphasis px-2 active"
                                             aria-current="page">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Features</a></li>
+                    <li class="nav-item"><a href="/pagos" class="nav-link link-body-emphasis px-2">Ver Pagos</a></li>
                     <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Pricing</a></li>
                     <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
                     <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
@@ -34,6 +34,8 @@
         <div th:fragment="container1" class="container m-auto">
             <h1>Bienvenido a Veterinaria ProVet</h1>
             <button onclick="window.location.href = '/proveedores'">Ver Proveedores</button>
+            <button onclick="window.location.href = '/enfermedades'">Ver lista de enfermedades</button>
+            <button onclick="window.location.href = '/productos'">Ver lista de productos</button>
         </div>
         
         

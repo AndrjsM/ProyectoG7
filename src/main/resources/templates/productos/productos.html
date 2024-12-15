@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Lista de productos</title>
+    <head/>
+    <body>
+        <div>
+            <nav  th:replace="~{plantilla :: headerNav}"><nav/>
+        </div>
+        <div class="container m-auto">
+            <h1>Lista de productos</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.productoId}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.tipo}"></td>
+                        <td th:text="${producto.precio}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

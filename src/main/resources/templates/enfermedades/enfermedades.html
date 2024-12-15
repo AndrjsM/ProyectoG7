@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Lista de Enfermedades</title>
+    <head/>
+    <body>
+        <div>
+            <nav  th:replace="~{plantilla :: headerNav}"><nav/>
+        </div>
+        <div class="container m-auto">
+            <h1>Lista de Enfermedades</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Común</th>
+                        <th>Nombre Científico</th>
+                        <th>Tiene cura?</th>
+                        <th>Es tratable?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="enfermedad : ${enfermedades}">
+                        <td th:text="${enfermedad.enfermedadId}"></td>
+                        <td th:text="${enfermedad.nombreComun}"></td>
+                        <td th:text="${enfermedad.nombreCientifico}"></td>
+                        <td th:text="${enfermedad.tieneCura}"></td>
+                        <td th:text="${enfermedad.esTratable}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

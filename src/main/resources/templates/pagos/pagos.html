@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Lista de Pagos</title>
+    <head/>
+    <body>
+        <div>
+            <nav  th:replace="~{plantilla :: headerNav}"><nav/>
+        </div>
+        <div class="container m-auto">
+            <h1>Lista de Pagos</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID Pago</th>
+                        <th>ID Consulta</th>
+                        <th>Subtotal</th>
+                        <th>Impuesto</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pago : ${pagos}">
+                        <td th:text="${pago.pagoId}"></td>
+                        <td th:text="${pago.consultaId}"></td>
+                        <td th:text="${pago.subTotal}"></td>
+                        <td th:text="${pago.impuesto}"></td>
+                        <td th:text="${pago.total}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
