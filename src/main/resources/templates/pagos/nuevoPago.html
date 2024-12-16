@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Agregar Nuevo Pago</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Agregar Nuevo Pago</h1>
+            <!-- Formulario para agregar un nuevo pago -->
+            <form th:action="@{/pagos/crear}" th:object="${pago}" method="post">
+                <div class="form-group">
+                    <label for="pagoId">ID Pago</label>
+                    <input type="number" id="pagoId" th:field="*{pagoId}" class="form-control" placeholder="ID del pago" required />
+                </div>
+                <div class="form-group">
+                    <label for="consultaId">ID Consulta</label>
+                    <input type="number" id="consultaId" th:field="*{consultaId}" class="form-control" placeholder="ID de la consulta" />
+                </div>
+                <div class="form-group">
+                    <label for="subTotal">Subtotal</label>
+                    <input type="number" id="subTotal" oninput="calculate()" th:field="*{subTotal}" class="form-control" placeholder="Subtotal" step=".01"/>
+                </div>
+                <div class="form-group">
+                    <label for="total">Impuesto (13%)</label>
+                    <input type="number" id="calImp" th:field="*{impuesto}" class="form-control" placeholder="Impuesto" step=".01" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="total">Total</label>
+                    <input type="number" id="calTotal" th:field="*{total}" class="form-control" placeholder="Total" step=".01" readonly />
+                </div>
+                <script>
+                    function calculate(){
+                        var subTotal = document.getElementById("subTotal").value;
+                        var subTotal = parseInt(subTotal, 10);
+                        var calImp = subTotal * 0.13;
+                        var calTotal = subTotal + calImp;
+                        document.getElementById("calImp").value = calImp;
+                        document.getElementById("calTotal").value = calTotal;
+                    }
+                </script>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/pagos" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

@@ -9,6 +9,8 @@
         </div>
         <div class="container m-auto">
             <h1>Lista de Pagos</h1>
+            <button onclick="window.location.href='/pagos/nuevo'" class="btn btn-primary mb-3">Agregar pago</button>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -17,6 +19,7 @@
                         <th>Subtotal</th>
                         <th>Impuesto</th>
                         <th>Total</th>
+                        <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +29,15 @@
                         <td th:text="${pago.subTotal}"></td>
                         <td th:text="${pago.impuesto}"></td>
                         <td th:text="${pago.total}"></td>
+                        <td>
+                            <!-- Botón de Editar -->
+                            <a th:href="@{/pagos/editar/{id}(id=${pago.id})}" class="btn btn-warning btn-sm">Editar</a>
+    
+                            <!-- Formulario de Eliminar -->
+                            <form th:action="@{/pagos/eliminar/{id}(id=${pago.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este pago?');">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>

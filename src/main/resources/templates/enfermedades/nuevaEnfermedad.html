@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Agregar Nueva Enfermedad</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Agregar Nueva Enfermedad</h1>
+            <!-- Formulario para agregar una nueva Enfermedad -->
+            <form th:action="@{/enfermedades/crear}" th:object="${enfermedad}" method="post">
+                <div class="form-group">
+                    <label for="enfermedadId">ID</label>
+                    <input type="number" id="enfermedadId" th:field="*{enfermedadId}" class="form-control" placeholder="ID de la enfermedad" required />
+                </div>
+                <div class="form-group">
+                    <label for="nombreComun">Nombre Común</label>
+                    <input type="text" id="nombreComun" th:field="*{nombreComun}" class="form-control" placeholder="Nombre común" required />
+                </div>
+                <div class="form-group">
+                    <label for="nombreCientifico">Nombre Científico</label>
+                    <input type="text" id="nombreCientifico" th:field="*{nombreCientifico}" class="form-control" placeholder="Nombre científico" required />
+                </div>
+                <div class="form-group">
+                    <label for="tieneCura">Tiene cura?</label>
+                    <select id="tieneCura" th:field="*{tieneCura}" class="form-control">
+                        <option value="si" th:selected="*{tieneCura == 'si'}">Sí</option>
+                        <option value="no" th:selected="*{tieneCura == 'no'}">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="esTratable">Es tratable?</label>
+                    <select id="esTratable" th:field="*{esTratable}" class="form-control">
+                        <option value="si" th:selected="*{esTratable == 'si'}">Sí</option>
+                        <option value="no" th:selected="*{esTratable == 'no'}">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/enfermedades" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

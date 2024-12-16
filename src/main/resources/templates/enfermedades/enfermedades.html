@@ -9,6 +9,8 @@
         </div>
         <div class="container m-auto">
             <h1>Lista de Enfermedades</h1>
+            <button onclick="window.location.href='/enfermedades/nuevo'" class="btn btn-primary mb-3">Agregar enfermedad</button>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -17,6 +19,7 @@
                         <th>Nombre Científico</th>
                         <th>Tiene cura?</th>
                         <th>Es tratable?</th>
+                        <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +29,15 @@
                         <td th:text="${enfermedad.nombreCientifico}"></td>
                         <td th:text="${enfermedad.tieneCura}"></td>
                         <td th:text="${enfermedad.esTratable}"></td>
+                        <td>
+                            <!-- Botón de Editar -->
+                            <a th:href="@{/enfermedades/editar/{id}(id=${enfermedad.id})}" class="btn btn-warning btn-sm">Editar</a>
+    
+                            <!-- Formulario de Eliminar -->
+                            <form th:action="@{/enfermedades/eliminar/{id}(id=${enfermedad.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta enfermedad?');">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>
