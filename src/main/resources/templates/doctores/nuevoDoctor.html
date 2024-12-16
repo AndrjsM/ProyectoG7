@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Agregar Nuevo Doctor</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Agregar Nuevo Doctor</h1>
+            <!-- Formulario para agregar un nuevo doctor -->
+            <form th:action="@{/doctores/crear}" th:object="${doctor}" method="post">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre del doctor" required />
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" placeholder="Apellidos del doctor" required />
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="noColegiado">No. Colegiado</label>
+                    <input type="text" id="noColegiado" th:field="*{noColegiado}" class="form-control" placeholder="Número de colegiado" required />
+                </div>
+                <div class="form-group">
+                    <label for="anhoIncorporacion">Año de Incorporación</label>
+                    <input type="number" id="anhoIncorporacion" th:field="*{anhoIncorporacion}" class="form-control" placeholder="Año de incorporación" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/doctores" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

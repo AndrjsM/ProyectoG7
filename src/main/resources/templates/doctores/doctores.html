@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{plantilla :: headPlantilla}">
+    <title>Lista de Doctores</title>
+</head>
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
+    </div>
+    <div class="container m-auto">
+        <h1>Lista de Doctores</h1>
+        <button onclick="window.location.href='/doctores/nuevo'" class="btn btn-primary mb-3">Agregar Doctor</button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>No. Colegiado</th>
+                    <th>Año de Incorporación</th>
+                    <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="doctor : ${doctores}">
+                    <td th:text="${doctor.doctorId}"></td>
+                    <td th:text="${doctor.nombre}"></td>
+                    <td th:text="${doctor.apellidos}"></td>
+                    <td th:text="${#dates.format(doctor.fechaNacimientoFormateada, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${doctor.noColegiado}"></td>
+                    <td th:text="${doctor.anhoIncorporacion}"></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a th:href="@{/doctores/editar/{id}(id=${doctor.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <!-- Formulario de Eliminar -->
+                        <form th:action="@{/doctores/eliminar/{id}(id=${doctor.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

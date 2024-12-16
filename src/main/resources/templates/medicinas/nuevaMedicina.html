@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Agregar Nueva Medicina</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Agregar Nueva Medicina</h1>
+            <!-- Formulario para agregar una nueva medicina -->
+            <form th:action="@{/medicinas/crear}" th:object="${medicina}" method="post">
+                <div class="form-group">
+                    <label for="medicinaId">Medicina ID</label>
+                    <input type="number" id="medicinaId" th:field="*{medicinaId}" class="form-control" placeholder="ID de la medicina" required />
+                </div>
+                <div class="form-group">
+                    <label for="nombreComercial">Nombre Comercial</label>
+                    <input type="text" id="nombreComercial" th:field="*{nombreComercial}" class="form-control" placeholder="Nombre comercial de la medicina" required />
+                </div>
+                <div class="form-group">
+                    <label for="nombreCompuesto">Nombre Compuesto</label>
+                    <input type="text" id="nombreCompuesto" th:field="*{nombreCompuesto}" class="form-control" placeholder="Nombre compuesto de la medicina" required />
+                </div>
+                <div class="form-group">
+                    <label for="casaFarma">Casa Farmacéutica</label>
+                    <input type="text" id="casaFarma" th:field="*{casaFarma}" class="form-control" placeholder="Casa farmacéutica" required />
+                </div>
+                <div class="form-group">
+                    <label for="requierePrescripcion">Requiere Prescripción</label>
+                    <select id="requierePrescripcion" th:field="*{requierePrescripcion}" class="form-control">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="aplicacion">Aplicación</label>
+                    <input type="text" id="aplicacion" th:field="*{aplicacion}" class="form-control" placeholder="Forma de aplicación" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/medicinas" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

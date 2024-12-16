@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{plantilla :: headPlantilla}">
+    <title>Lista de Medicinas</title>
+</head>
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
+    </div>
+    <div class="container m-auto">
+        <h1>Lista de Medicinas</h1>
+        <button onclick="window.location.href='/medicinas/nuevo'" class="btn btn-primary mb-3">Agregar Medicina</button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Medicina ID</th>
+                    <th>Nombre Comercial</th>
+                    <th>Nombre Compuesto</th>
+                    <th>Casa Farmacéutica</th>
+                    <th>Requiere Prescripción</th>
+                    <th>Aplicación</th>
+                    <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="medicina : ${medicinas}">
+                    <td th:text="${medicina.medicinaId}"></td>
+                    <td th:text="${medicina.nombreComercial}"></td>
+                    <td th:text="${medicina.nombreCompuesto}"></td>
+                    <td th:text="${medicina.casaFarma}"></td>
+                    <td th:text="${medicina.requierePrescripcion}"></td>
+                    <td th:text="${medicina.aplicacion}"></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a th:href="@{/medicinas/editar/{id}(id=${medicina.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <!-- Formulario de Eliminar -->
+                        <form th:action="@{/medicinas/eliminar/{id}(id=${medicina.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta medicina?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
