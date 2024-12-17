@@ -41,6 +41,11 @@
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="/medicinas" class="btn btn-secondary">Cancelar</a>
             </form>
+
+            <!-- Mostrar errores si hay algún problema -->
+            <div th:if="${error}" class="alert alert-danger mt-3">
+                <p th:text="${error}"></p>
+            </div>
         </div>
     </body>
 </html>
