@@ -12,6 +12,10 @@
             <!-- Formulario para agregar un nuevo doctor -->
             <form th:action="@{/doctores/crear}" th:object="${doctor}" method="post">
                 <div class="form-group">
+                    <label for="doctorId">Doctor ID</label>
+                    <input type="number" id="doctorId" th:field="*{doctorId}" class="form-control" placeholder="ID del doctor" required />
+                </div>
+                <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre del doctor" required />
                 </div>
@@ -21,11 +25,11 @@
                 </div>
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" class="form-control" required />
+                    <input type="text" id="fechaNacimiento" th:field="*{fechaNacimiento}" class="form-control" placeholder="Fecha de nacimiento" required />
                 </div>
                 <div class="form-group">
-                    <label for="noColegiado">No. Colegiado</label>
-                    <input type="text" id="noColegiado" th:field="*{noColegiado}" class="form-control" placeholder="Número de colegiado" required />
+                    <label for="noColegiado">Número Colegiado</label>
+                    <input type="number" id="noColegiado" th:field="*{noColegiado}" class="form-control" placeholder="Número colegiado" required />
                 </div>
                 <div class="form-group">
                     <label for="anhoIncorporacion">Año de Incorporación</label>
@@ -34,6 +38,11 @@
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="/doctores" class="btn btn-secondary">Cancelar</a>
             </form>
+
+            <!-- Mostrar errores si hay algún problema -->
+            <div th:if="${error}" class="alert alert-danger mt-3">
+                <p th:text="${error}"></p>
+            </div>
         </div>
     </body>
 </html>

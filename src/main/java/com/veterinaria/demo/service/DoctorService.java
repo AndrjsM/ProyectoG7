@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DoctorService {
-    Doctor crearDoctor(Doctor doctor);
-    List<Doctor> obtenerTodosLosDoctores();
-    Optional<Doctor> obtenerDoctorPorId(String id);
-    Doctor actualizarDoctor(String id, Doctor doctor);
-    void eliminarDoctor(String id);
+    Doctor crearDoctor(Doctor doctor); // Crear un nuevo doctor
+    List<Doctor> obtenerTodosLosDoctores(); // Obtener todos los doctores
+    Optional<Doctor> obtenerDoctorPorId(String id); // Obtener doctor por su ID
+    Doctor actualizarDoctor(String id, Doctor doctor); // Actualizar un doctor
+    void eliminarDoctor(String id); // Eliminar un doctor
 }
