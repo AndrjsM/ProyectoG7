@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{plantilla :: headPlantilla}">
+    <title>Lista de Próximas Citas</title>
+</head>
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
+    </div>
+    <div class="container m-auto">
+        <h1>Lista de Próximas Citas</h1>
+        <button onclick="window.location.href='/proximaCitas/nuevo'" class="btn btn-primary mb-3">Agregar una próxima cita</button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID de próxima cita</th>
+                    <th>ID de consulta asociada</th>
+                    <th>Fecha de próxima cita</th>
+                    <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="proximaCita : ${proximaCitas}">
+                    <td th:text="${proximaCita.proximaCitaId}"></td>
+                    <td th:text="${proximaCita.consultaId}"></td>
+                    <td th:text="${proximaCita.fechaCita}"></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a th:href="@{/proximaCitas/editar/{id}(id=${proximaCita.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <!-- Formulario de Eliminar -->
+                        <form th:action="@{/proximaCitas/eliminar/{id}(id=${proximaCita.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

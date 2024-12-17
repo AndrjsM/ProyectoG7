@@ -18,7 +18,7 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de Nacimiento</th>
-                    <th>No. Colegiado</th>
+                    <th>Número Colegiado</th>
                     <th>Año de Incorporación</th>
                     <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
                 </tr>
@@ -28,7 +28,7 @@
                     <td th:text="${doctor.doctorId}"></td>
                     <td th:text="${doctor.nombre}"></td>
                     <td th:text="${doctor.apellidos}"></td>
-                    <td th:text="${#dates.format(doctor.fechaNacimientoFormateada, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${doctor.fechaNacimiento}"></td>
                     <td th:text="${doctor.noColegiado}"></td>
                     <td th:text="${doctor.anhoIncorporacion}"></td>
                     <td>
@@ -37,7 +37,7 @@
 
                         <!-- Formulario de Eliminar -->
                         <form th:action="@{/doctores/eliminar/{id}(id=${doctor.id})}" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este doctor?');">Eliminar</button>
                         </form>
                     </td>
                 </tr>

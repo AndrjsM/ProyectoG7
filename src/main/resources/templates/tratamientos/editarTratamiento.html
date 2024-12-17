@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Editar Tratamiento</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Editar Tratamiento</h1>
+            <!-- Formulario para editar un tratamiento -->
+            <form th:action="@{/tratamientos/editar/{id}(id=${tratamiento.id})}" th:object="${tratamiento}" method="post">
+                <div class="form-group">
+                    <label for="tratamientoId">Tratamiento ID</label>
+                    <input type="number" id="tratamientoId" th:field="*{tratamientoId}" class="form-control" placeholder="ID del tratamiento" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="consultaId">Consulta ID</label>
+                    <input type="number" id="consultaId" th:field="*{consultaId}" class="form-control" placeholder="ID de la consulta" required />
+                </div>
+                <div class="form-group">
+                    <label for="enfermedadId">Enfermedad ID</label>
+                    <input type="number" id="enfermedadId" th:field="*{enfermedadId}" class="form-control" placeholder="ID de la enfermedad" required />
+                </div>
+                <div class="form-group">
+                    <label for="pacienteId">Paciente ID</label>
+                    <input type="number" id="pacienteId" th:field="*{pacienteId}" class="form-control" placeholder="ID del paciente" required />
+                </div>
+                <div class="form-group">
+                    <label for="inventarioId">Inventario ID</label>
+                    <input type="number" id="inventarioId" th:field="*{inventarioId}" class="form-control" placeholder="ID del inventario" required />
+                </div>
+                <div class="form-group">
+                    <label for="tratamientoInicia">Tratamiento Inicia</label>
+                    <input type="date" id="tratamientoInicia" th:field="*{tratamientoInicia}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="tratamientoTermina">Tratamiento Termina</label>
+                    <input type="date" id="tratamientoTermina" th:field="*{tratamientoTermina}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="requiereRenovar">Requiere Renovar</label>
+                    <select id="requiereRenovar" th:field="*{requiereRenovar}" class="form-control">
+                        <option value="si" th:selected="*{requiereRenovar == 'si'}">Sí</option>
+                        <option value="no" th:selected="*{requiereRenovar == 'no'}">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="/tratamientos" class="btn btn-secondary">Cancelar</a>
+            </form>
+
+            <!-- Mostrar errores si hay algún problema -->
+            <div th:if="${error}" class="alert alert-danger mt-3">
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -5,33 +5,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.Date;  // Importamos la clase Date
-
 @Data
-@Document(collection = "Doctores")
+@Document(collection = "Doctores") // Nombre de la colección en MongoDB
 public class Doctor {
-    
+
     @Id
-    private String id; // _id en MongoDB (ejemplo: 675e2b93e792142cd1faf612)
+    private String id; // _id en MongoDB (ejemplo: 675e2b93e792142cd1faf613)
     
     @Field("doctor_id")
-    private Integer doctorId; // doctor_id (ejemplo: 1)
+    private Integer doctorId; // doctor_id (ejemplo: 2)
     
-    private String nombre; // nombre (ejemplo: Manuel)
-    private String apellidos; // apellidos (ejemplo: Bedoya)
+    @Field("nombre")
+    private String nombre; // nombre (ejemplo: "Anamaria")
     
-    @Field("fecha_nacimiento")
-    private String fechaNacimiento; // fecha_nacimiento (ejemplo: "12-05-89")
+    @Field("apellidos")
+    private String apellidos; // apellidos (ejemplo: "Ulloa")
     
-    private Date fechaNacimientoFormateada; // fechaNacimiento convertido a Date (ejemplo: Date tipo)
+    @Field("fecha_nacimmiento")
+    private String fechaNacimiento; // fecha_nacimmiento (ejemplo: "12-21-1991")
     
     @Field("no_colegiado")
-    private Integer noColegiado; // no_colegiado (ejemplo: 85209)
+    private Integer noColegiado; // no_colegiado (ejemplo: 88524)
     
     @Field("anho_incorporacion")
-    private Integer anhoIncorporacion; // anho_incorporacion (ejemplo: 2015)
+    private Integer anhoIncorporacion; // anho_incorporacion (ejemplo: 2019)
 
-    // Constructor
+    // Constructor sin parámetros
     public Doctor() {}
 
     // Constructor con parámetros
@@ -44,12 +43,4 @@ public class Doctor {
         this.anhoIncorporacion = anhoIncorporacion;
     }
 
-    // Getters y Setters
-    public Date getFechaNacimientoFormateada() {
-        return fechaNacimientoFormateada;
-    }
-
-    public void setFechaNacimientoFormateada(Date fechaNacimientoFormateada) {
-        this.fechaNacimientoFormateada = fechaNacimientoFormateada;
-    }
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{plantilla :: headPlantilla}">
+    <title>Lista de Tratamientos</title>
+</head>
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
+    </div>
+    <div class="container m-auto">
+        <h1>Lista de Tratamientos</h1>
+        <button onclick="window.location.href='/tratamientos/nuevo'" class="btn btn-primary mb-3">Agregar Tratamiento</button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tratamiento ID</th>
+                    <th>Consulta ID</th>
+                    <th>Enfermedad ID</th>
+                    <th>Paciente ID</th>
+                    <th>Tratamiento Inicia</th>
+                    <th>Tratamiento Termina</th>
+                    <th>Requiere Renovar</th>
+                    <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tratamiento : ${tratamientos}">
+                    <td th:text="${tratamiento.tratamientoId}"></td>
+                    <td th:text="${tratamiento.consultaId}"></td>
+                    <td th:text="${tratamiento.enfermedadId}"></td>
+                    <td th:text="${tratamiento.pacienteId}"></td>
+                    <td th:text="${tratamiento.tratamientoInicia}"></td>
+                    <td th:text="${tratamiento.tratamientoTermina}"></td>
+                    <td th:text="${tratamiento.requiereRenovar}"></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a th:href="@{/tratamientos/editar/{id}(id=${tratamiento.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <!-- Formulario de Eliminar -->
+                        <form th:action="@{/tratamientos/eliminar/{id}(id=${tratamiento.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este tratamiento?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

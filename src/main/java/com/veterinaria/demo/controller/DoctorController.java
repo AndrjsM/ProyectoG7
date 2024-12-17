@@ -1,5 +1,6 @@
 package com.veterinaria.demo.controller;
 
+import com.mongodb.MongoWriteException;
 import com.veterinaria.demo.domain.Doctor;
 import com.veterinaria.demo.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,21 @@ public class DoctorController {
         return "doctores/nuevoDoctor"; // Template para crear un nuevo doctor
     }
 
-    // Crear un nuevo doctor
+    // Crear un nuevo doctor con manejo de errores
     @PostMapping("/crear")
-    public String crearDoctor(@ModelAttribute Doctor doctor) {
-        doctorService.crearDoctor(doctor);
-        return "redirect:/doctores"; // Redirigir a la lista de doctores después de crear
+    public String crearDoctor(@ModelAttribute Doctor doctor, Model model) {
+        try {
+            doctorService.crearDoctor(doctor);
+            return "redirect:/doctores"; // Redirigir a la lista de doctores después de crear
+        } catch (MongoWriteException e) {
+            model.addAttribute("error", "Error al crear el doctor: " + e.getMessage());
+            model.addAttribute("doctor", doctor); // Mantener los datos del formulario
+            return "doctores/nuevoDoctor"; // Volver al formulario con el mensaje de error
+        } catch (Exception e) {
+            model.addAttribute("error", "Ocurrió un error inesperado: " + e.getMessage());
+            model.addAttribute("doctor", doctor);
+            return "doctores/nuevoDoctor";
+        }
     }
 
     // Mostrar el formulario para editar un doctor
@@ -51,19 +62,27 @@ public class DoctorController {
         }
     }
 
-    // Editar un doctor
+    // Editar un doctor con manejo de errores
     @PostMapping("/editar/{id}")
-    public String editarDoctor(@PathVariable String id, @ModelAttribute Doctor doctor) {
-        doctorService.actualizarDoctor(id, doctor);
-        return "redirect:/doctores"; // Redirigir a la lista de doctores después de editar
+    public String editarDoctor(@PathVariable String id, @ModelAttribute Doctor doctor, Model model) {
+        try {
+            doctorService.actualizarDoctor(id, doctor);
+            return "redirect:/doctores"; // Redirigir a la lista de doctores después de editar
+        } catch (MongoWriteException e) {
+            model.addAttribute("error", "Error al actualizar el doctor: " + e.getMessage());
+            model.addAttribute("doctor", doctor); // Mantener los datos del formulario
+            return "doctores/editarDoctor"; // Volver al formulario con el mensaje de error
+        } catch (Exception e) {
+            model.addAttribute("error", "Ocurrió un error inesperado: " + e.getMessage());
+            model.addAttribute("doctor", doctor);
+            return "doctores/editarDoctor";
+        }
     }
 
-@PostMapping("/eliminar/{id}")
-public String eliminarDoctor(@PathVariable String id) {
-    doctorService.eliminarDoctor(id);
-    return "redirect:/doctores"; // Redirigir a la lista de doctores después de eliminar
-}
-
-
-
+    // Eliminar un doctor
+    @PostMapping("/eliminar/{id}")
+    public String eliminarDoctor(@PathVariable String id) {
+        doctorService.eliminarDoctor(id);
+        return "redirect:/doctores"; // Redirigir a la lista de doctores después de eliminar
+    }
 }
