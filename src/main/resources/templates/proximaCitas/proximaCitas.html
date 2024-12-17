@@ -31,7 +31,7 @@
 
                         <!-- Formulario de Eliminar -->
                         <form th:action="@{/proximaCitas/eliminar/{id}(id=${proximaCita.id})}" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">Eliminar</button>
                         </form>
                     </td>
                 </tr>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{plantilla :: headPlantilla}">
+        <title>Editar Inventario</title>
+    </head>
+    <body>
+        <div>
+            <nav th:replace="~{plantilla :: headerNav}"></nav>
+        </div>
+        <div class="container m-auto">
+            <h1>Editar Inventario</h1>
+            <!-- Formulario para editar un Inventario -->
+            <form th:action="@{/inventarios/editar/{id}(id=${inventario.id})}" th:object="${inventario}" method="post">
+                <div class="form-group">
+                    <label for="inventarioId">ID de registro</label>
+                    <input type="number" id="inventarioId" th:field="*{inventarioId}" class="form-control" placeholder="ID del registro" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="proveedorId">ID del proveedor</label>
+                    <input type="number" id="proveedorId" th:field="*{proveedorId}" class="form-control" placeholder="ID del proveedor" />
+                </div>
+                <div class="form-group">
+                    <label for="productoId">ID del producto</label>
+                    <input type="number" id="productoId" th:field="*{productoId}" class="form-control" placeholder="ID del producto" />
+                </div>
+                <div class="form-group">
+                    <label for="stockDisp">Stock disponible</label>
+                    <input type="number" id="stockDisp" oninput="setFecha()" th:field="*{stockDisp}" class="form-control" placeholder="Stock disponible" />
+                </div>
+                <div class="form-group">
+                    <label for="stockMin">Stock mínimo</label>
+                    <input type="number" id="stockMin" th:field="*{stockMin}" class="form-control" placeholder="Stock disponible" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="fechaUltima">Fecha última modificación</label>
+                    <input type="text" id="fechaHoy" th:field="*{fechaUltima}" class="form-control" readonly />
+                </div>
+                <script>
+                    function setFecha(){
+                        var todaydate = new Date();
+                        var day = todaydate.getDate();
+                        var month = todaydate.getMonth() + 1;
+                        var year = todaydate.getFullYear();
+                        var datestring = day + "-" + month + "-" + year;
+                        document.getElementById("fechaHoy").value = datestring;
+                    }
+                </script>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="/proximaCitas" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

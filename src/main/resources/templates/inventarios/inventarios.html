@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{plantilla :: headPlantilla}">
+    <title>Inventario</title>
+</head>
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
+    </div>
+    <div class="container m-auto">
+        <h1>Inventario</h1>
+        <button onclick="window.location.href='/inventarios/nuevo'" class="btn btn-primary mb-3">Agregar nuevo registro de inventario</button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID registro</th>
+                    <th>ID del proveedor</th>
+                    <th>ID del producto</th>
+                    <th>Stock disponible</th>
+                    <th>Stock mínimo</th>
+                    <th>Fecha de última actualización</th>
+                    <th>Acciones</th> <!-- Columna para los botones de editar y eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="inventario : ${inventarios}">
+                    <td th:text="${inventario.inventarioId}"></td>
+                    <td th:text="${inventario.proveedorId}"></td>
+                    <td th:text="${inventario.productoId}"></td>
+                    <td th:text="${inventario.stockDisp}"></td>
+                    <td th:text="${inventario.stockMin}"></td>
+                    <td th:text="${inventario.fechaUltima}"></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a th:href="@{/inventarios/editar/{id}(id=${inventario.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <!-- Formulario de Eliminar -->
+                        <form th:action="@{/inventarios/eliminar/{id}(id=${inventario.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro de inventario?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
