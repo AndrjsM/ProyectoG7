@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head th:insert="~{plantilla :: headPlantilla}">
+</head>
+
+<body>
+    <div>
+        <nav th:replace="~{plantilla :: headerNav}">
+        </nav>
+    </div>
+
+    <div class="container m-auto">
+        <div class="container-fluid p-2">
+            <div class="row flex-grow-1">
+                <div class="col-12 col-md-3 bg-dark">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px height: 100%;">
+                        <a href="/"
+                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-4">Sidebar</span>
+                        </a>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active" aria-current="page">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    Orders
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    Products
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    Customers
+                                </a>
+                            </li>
+                        </ul>
+                        <!--<hr>
+                         <div class="dropdown">
+                            <a href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="" width="32" height="32"
+                                    class="rounded-circle me-2">
+                                <strong>mdo</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                <li><a class="dropdown-item" href="#">New project...</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="col-12 col-md-1"></div>
+                <div class="col-md-7 col-lg-8">
+                    <h2 class="text-white">Registro de cliente</h2>
+                    <form id="ubicacionForm" class="p-3">
+                        <div class="row g-3">
+                            <!-- <div class="col-sm-6"> -->
+                            <div class="col-12">
+                                <label for="firstName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="lastName" class="form-label">Primer apellido</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="lastName" class="form-label">Segundo apellido</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="lastName" class="form-label">Identificación</label>
+                                <input type="number" class="form-control" id="lastName" placeholder="100001111" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="username" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control" id="username" placeholder="username"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Your username is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email <span
+                                        class="text-body-secondary"></span></label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+                            <!-- Selector de Provincias -->
+                            <div class="col-12">
+                                <label for="provincias" class="form-label">Provincia<span
+                                        class="text-body-secondary"></span></label>
+                                <select id="provincias" class="form-select">
+                                    <option value="">Seleccione una provincia</option>
+                                </select>
+                            </div>
+
+                            <!-- Selector de Cantones -->
+                            <div class="mb-3">
+                                <label for="cantones" class="form-label">Cantón<span
+                                        class="text-body-secondary"></span></label>
+                                <select id="cantones" class="form-select" disabled>
+                                    <option value="">Seleccione un cantón</option>
+                                </select>
+                            </div>
+
+                            <!-- Selector de Distritos -->
+                            <div class="mb-3">
+                                <label for="distritos" class="form-label">Distrito<span
+                                        class="text-body-secondary"></span></label>
+                                <select id="distritos" class="form-select" disabled>
+                                    <option value="">Seleccione un distrito</option>
+                                </select>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // URLs base de la API
+            const API_BASE = 'https://ubicaciones.paginasweb.cr';
+
+            // Elementos del DOM
+            const provinciasSelect = document.getElementById('provincias');
+            const cantonesSelect = document.getElementById('cantones');
+            const distritosSelect = document.getElementById('distritos');
+
+            // Función para cargar las provincias
+            const cargarProvincias = () => {
+                fetch(`${API_BASE}/provincias.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        Object.entries(data).forEach(([id, nombre]) => {
+                            const option = document.createElement('option');
+                            option.value = id;
+                            option.textContent = nombre;
+                            provinciasSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error cargando provincias:', error));
+            };
+
+            // Evento para cargar cantones al seleccionar una provincia
+            provinciasSelect.addEventListener('change', () => {
+                const provinciaId = provinciasSelect.value;
+                cantonesSelect.innerHTML = '<option value="">Seleccione un cantón</option>';
+                distritosSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+                cantonesSelect.disabled = true;
+                distritosSelect.disabled = true;
+
+                if (provinciaId) {
+                    fetch(`${API_BASE}/provincia/${provinciaId}/cantones.json`)
+                        .then(response => response.json())
+                        .then(data => {
+                            Object.entries(data).forEach(([id, nombre]) => {
+                                const option = document.createElement('option');
+                                option.value = id;
+                                option.textContent = nombre;
+                                cantonesSelect.appendChild(option);
+                            });
+                            cantonesSelect.disabled = false;
+                        })
+                        .catch(error => console.error('Error cargando cantones:', error));
+                }
+            });
+
+            // Evento para cargar distritos al seleccionar un cantón
+            cantonesSelect.addEventListener('change', () => {
+                const provinciaId = provinciasSelect.value;
+                const cantonId = cantonesSelect.value;
+                distritosSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+                distritosSelect.disabled = true;
+
+                if (cantonId) {
+                    fetch(`${API_BASE}/provincia/${provinciaId}/canton/${cantonId}/distritos.json`)
+                        .then(response => response.json())
+                        .then(data => {
+                            Object.entries(data).forEach(([id, nombre]) => {
+                                const option = document.createElement('option');
+                                option.value = id;
+                                option.textContent = nombre;
+                                distritosSelect.appendChild(option);
+                            });
+                            distritosSelect.disabled = false;
+                        })
+                        .catch(error => console.error('Error cargando distritos:', error));
+                }
+            });
+
+            // Llamar a la función para cargar provincias al iniciar
+            cargarProvincias();
+        });
+    </script>
+
+
+</body>
+
+</html>
