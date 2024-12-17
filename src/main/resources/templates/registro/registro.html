@@ -2,166 +2,253 @@
 <html lang="en" data-bs-theme="dark">
 
 <head th:insert="~{plantilla :: headPlantilla}">
+    <title>Registro de Cliente</title>
 </head>
 
 <body>
     <div>
-        <nav th:replace="~{plantilla :: headerNav}">
-        </nav>
+        <nav th:replace="~{plantilla :: headerNav}"></nav>
     </div>
 
     <div class="container m-auto">
         <div class="container-fluid p-2">
             <div class="row flex-grow-1">
                 <div class="col-12 col-md-3 bg-dark">
-                    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px height: 100%;">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
                         <a href="/"
                             class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <span class="fs-4">Sidebar</span>
+                            <span class="fs-4">ProVet</span>
                         </a>
                         <hr>
                         <ul class="nav nav-pills flex-column mb-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link active" aria-current="page">
-                                    Home
+                                    Registrar nuevo cliente
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
-                                    Dashboard
+                                    Registrar cita
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
-                                    Orders
+                                    Modificar citas
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
-                                    Products
+                                    Registro de atencion
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-white">
-                                    Customers
+                                    Calendario
                                 </a>
                             </li>
                         </ul>
-                        <!--<hr>
-                         <div class="dropdown">
-                            <a href="#"
-                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32"
-                                    class="rounded-circle me-2">
-                                <strong>mdo</strong>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>-->
                     </div>
                 </div>
                 <div class="col-12 col-md-1"></div>
                 <div class="col-md-7 col-lg-8">
                     <h2 class="text-white">Registro de cliente</h2>
-                    <form id="ubicacionForm" class="p-3">
+                    <form id="registroForm" class="p-3">
                         <div class="row g-3">
-                            <!-- <div class="col-sm-6"> -->
-                            <div class="col-12">
-                                <label for="firstName" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <div class="col-sm-6">
+                                <label for="identificacionCliente" class="form-label">Identificación</label>
+                                <input type="number" class="form-control" id="identificacionCliente"
+                                    name="identificacionCliente" placeholder="100001111" value="" required>
                                 <div class="invalid-feedback">
-                                    Valid first name is required.
+                                    La identificación es requerida.
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="nombreCliente" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombreCliente" name="nombreCliente"
+                                    placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    El nombre es requerido.
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <label for="lastName" class="form-label">Primer apellido</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="col-sm-6">
+                                <label for="primerApellidoCliente" class="form-label">Primer apellido</label>
+                                <input type="text" class="form-control" id="primerApellidoCliente"
+                                    name="primerApellidoCliente" placeholder="" value="" required>
                                 <div class="invalid-feedback">
-                                    Valid last name is required.
+                                    El primer apellido es requerido.
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <label for="lastName" class="form-label">Segundo apellido</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="col-sm-6">
+                                <label for="segundoApellidoCliente" class="form-label">Segundo apellido</label>
+                                <input type="text" class="form-control" id="segundoApellidoCliente"
+                                    name="segundoApellidoCliente" placeholder="" value="" required>
                                 <div class="invalid-feedback">
-                                    Valid last name is required.
+                                    El segundo apellido es requerido.
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <label for="lastName" class="form-label">Identificación</label>
-                                <input type="number" class="form-control" id="lastName" placeholder="100001111" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="username" class="form-label">Username</label>
+                            <div class="col-sm-6">
+                                <label for="usernameCliente" class="form-label">Username</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text">@</span>
-                                    <input type="text" class="form-control" id="username" placeholder="username"
-                                        required>
+                                    <input type="text" class="form-control" id="usernameCliente" name="usernameCliente"
+                                        placeholder="username" required>
                                     <div class="invalid-feedback">
-                                        Your username is required.
+                                        El username es requerido.
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email <span
+                            <div class="col-sm-6">
+                                <label for="emailCliente" class="form-label">Email <span
                                         class="text-body-secondary"></span></label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <input type="email" class="form-control" id="emailCliente" name="emailCliente"
+                                    placeholder="you@example.com">
                                 <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
+                                    Por favor ingrese un correo electrónico válido.
                                 </div>
                             </div>
-                            <!-- Selector de Provincias -->
-                            <div class="col-12">
-                                <label for="provincias" class="form-label">Provincia<span
-                                        class="text-body-secondary"></span></label>
-                                <select id="provincias" class="form-select">
+                            <div class="col-sm-4">
+                                <label for="provincias" class="form-label">Provincia</label>
+                                <select id="provincias" name="provinciaCliente" class="form-select" required>
                                     <option value="">Seleccione una provincia</option>
                                 </select>
+                                <div class="invalid-feedback">Seleccione una provincia.</div>
                             </div>
 
-                            <!-- Selector de Cantones -->
-                            <div class="mb-3">
-                                <label for="cantones" class="form-label">Cantón<span
-                                        class="text-body-secondary"></span></label>
-                                <select id="cantones" class="form-select" disabled>
+                            <div class="col-sm-4">
+                                <label for="cantones" class="form-label">Cantón</label>
+                                <select id="cantones" name="cantonCliente" class="form-select" disabled required>
                                     <option value="">Seleccione un cantón</option>
                                 </select>
+                                <div class="invalid-feedback">Seleccione un cantón.</div>
                             </div>
 
-                            <!-- Selector de Distritos -->
-                            <div class="mb-3">
-                                <label for="distritos" class="form-label">Distrito<span
-                                        class="text-body-secondary"></span></label>
-                                <select id="distritos" class="form-select" disabled>
+                            <div class="col-sm-4">
+                                <label for="distritos" class="form-label">Distrito</label>
+                                <select id="distritos" name="distritoCliente" class="form-select" disabled required>
                                     <option value="">Seleccione un distrito</option>
                                 </select>
+                                <div class="invalid-feedback">Seleccione un distrito.</div>
                             </div>
+
+                            <div class="col-sm-12">
+                                <label for="direccionCliente" class="form-label">Dirección exacta</label>
+                                <input type="text" class="form-control" id="direccionCliente" name="direccionCliente"
+                                    placeholder="Ejemplo: 300m norte de la iglesia">
+                            </div>
+                            <hr>
+                            <section>
+                                <h5>Registro de Mascotas</h5>
+                                <div id="mascotas-container">
+                                </div>
+                                <button type="button" id="agregar-mascota" class="btn btn-secondary">Agregar otra
+                                    mascota</button>
+                            </section>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <template id="mascota-template">
+        <div class="mascota-form p-3 mb-3 rounded">
+            <div class="row g-3">
+                <div class="col-sm-4">
+                    <label for="tipoMascota" class="form-label">Tipo de mascota</label>
+                    <select class="form-select" name="tipoMascota[]" required>
+                        <option value="">Seleccione</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Ave">Ave</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <div class="invalid-feedback">Seleccione un tipo de mascota.</div>
+
+                </div>
+                <div class="col-sm-4">
+                    <label for="nombreMascota" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombreMascota[]" placeholder="Firulais" required>
+                    <div class="invalid-feedback">Ingrese el nombre de la mascota.</div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="annoMascota" class="form-label">Año</label>
+                    <input type="number" class="form-control" name="edadMascota[]" placeholder="0" min="0" required>
+                    <div class="invalid-feedback">Ingrese la edad de la mascota.</div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="mesesMascota" class="form-label">meses</label>
+                    <input type="number" class="form-control" name="edadMascota[]" placeholder="0" min="0" required>
+                    <div class="invalid-feedback">Ingrese la edad de la mascota.</div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="razaMascota" class="form-label">Raza</label>
+                    <input type="text" class="form-control" name="razaMascota[]" placeholder="Labrador" required>
+                    <div class="invalid-feedback">Ingrese la raza de la mascota.</div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="pesoMascota" class="form-label">Peso (kg)</label>
+                    <input type="number" step="0.1" class="form-control" name="pesoMascota[]" placeholder="20.5"
+                        required>
+                    <div class="invalid-feedback">Ingrese el peso de la mascota.</div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="tamañoMascota" class="form-label">Tamaño</label>
+                    <select class="form-select" name="tipoMascota[]" required>
+                        <option value="">Seleccione</option>
+                        <option value="Grande">Grande</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Tacita">Tacita</option>
+                    </select>
+                    <div class="invalid-feedback">Ingrese el tamaño de la mascota.</div>
+                </div>
+            </div>
+        </div>
+    </template>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const mascotaContainer = document.getElementById('mascotas-container');
+            const mascotaTemplate = document.getElementById('mascota-template');
+            const agregarMascotaBtn = document.getElementById('agregar-mascota');
+            const registroForm = document.getElementById('registroForm');
+
+            agregarMascotaBtn.addEventListener('click', () => {
+                const nuevaMascota = mascotaTemplate.content.cloneNode(true);
+                mascotaContainer.appendChild(nuevaMascota);
+                const botonesEliminar = mascotaContainer.querySelectorAll('.eliminar-mascota');
+                botonesEliminar.forEach(boton => {
+                    boton.addEventListener('click', (event) => {
+                        event.preventDefault(); // Prevenir el comportamiento predeterminado del botón
+                        event.target.closest('.mascota-form').remove();
+                        // Recalcular la validación del formulario después de eliminar una mascota
+                        registroForm.checkValidity();
+                    });
+                });
+                registroForm.checkValidity();//valida el formulario al agregar una mascota
+            });
+
+            // Agregar la primera mascota al cargar la página
+            agregarMascotaBtn.click();
+
+            // Validar que al menos haya una mascota
+            registroForm.addEventListener('submit', (event) => {
+                if (mascotaContainer.children.length === 0) {
+                    event.preventDefault();
+                    alert('Debe registrar al menos una mascota.');
+                }
+                if (!registroForm.checkValidity()) {
+                    event.preventDefault(); // Evita que se envíe el formulario si no es válido
+                    registroForm.classList.add('was-validated'); // Muestra los mensajes de validación
+                }
+            });
+
             // URLs base de la API
             const API_BASE = 'https://ubicaciones.paginasweb.cr';
 
@@ -236,8 +323,6 @@
             cargarProvincias();
         });
     </script>
-
-
 </body>
 
 </html>
