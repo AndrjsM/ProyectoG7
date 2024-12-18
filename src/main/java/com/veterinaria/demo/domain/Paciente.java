@@ -34,13 +34,13 @@ public class Paciente {
     private Integer cedDuenho; // ced_duenho (ejemplo: "11112222")
     
     @Field("telefono_contacto")
-    private String telefonoContacto; // telefono_contacto (ejemplo: "33338888")
+    private Integer telefonoContacto; // telefono_contacto (ejemplo: "33338888")
 
     // Constructor sin parámetros
     public Paciente() {}
 
     // Constructor con parámetros
-    public Paciente(Integer pacienteId, String nombreMascota, String especie, String raza, Integer edadMeses, String nombreDuenho, Integer cedDuenho, String telefonoContacto) {
+    public Paciente(Integer pacienteId, String nombreMascota, String especie, String raza, Integer edadMeses, String nombreDuenho, Integer cedDuenho, Integer telefonoContacto) {
         this.pacienteId = pacienteId;
         this.nombreMascota = nombreMascota;
         this.especie = especie;

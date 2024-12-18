@@ -52,12 +52,12 @@
                 <div class="col-12 col-md-1"></div>
                 <div class="col-md-7 col-lg-8">
                     <h2 class="text-white">Registro de cliente</h2>
-                    <form id="registroForm" class="p-3">
+                    <form th:action="@{/registro}" th:object="${cliente}" method="post" id="registroForm" class="p-3">
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="identificacionCliente" class="form-label">Identificación</label>
                                 <input type="number" class="form-control" id="identificacionCliente"
-                                    name="identificacionCliente" placeholder="100001111" value="" required>
+                                    name="identificacionCliente" placeholder="100001111" th:field="*{cedula}" required>
                                 <div class="invalid-feedback">
                                     La identificación es requerida.
                                 </div>
@@ -65,7 +65,7 @@
                             <div class="col-sm-6">
                                 <label for="nombreCliente" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombreCliente" name="nombreCliente"
-                                    placeholder="" value="" required>
+                                    placeholder="" th:field="*{nombre}" required>
                                 <div class="invalid-feedback">
                                     El nombre es requerido.
                                 </div>
@@ -74,7 +74,7 @@
                             <div class="col-sm-6">
                                 <label for="primerApellidoCliente" class="form-label">Primer apellido</label>
                                 <input type="text" class="form-control" id="primerApellidoCliente"
-                                    name="primerApellidoCliente" placeholder="" value="" required>
+                                    name="primerApellidoCliente" placeholder="" th:field="*{apellido1}" required>
                                 <div class="invalid-feedback">
                                     El primer apellido es requerido.
                                 </div>
@@ -83,7 +83,7 @@
                             <div class="col-sm-6">
                                 <label for="segundoApellidoCliente" class="form-label">Segundo apellido</label>
                                 <input type="text" class="form-control" id="segundoApellidoCliente"
-                                    name="segundoApellidoCliente" placeholder="" value="" required>
+                                    name="segundoApellidoCliente" placeholder="" th:field="*{apellido2}" required>
                                 <div class="invalid-feedback">
                                     El segundo apellido es requerido.
                                 </div>
@@ -93,7 +93,7 @@
                                 <label for="emailCliente" class="form-label">Email <span
                                         class="text-body-secondary"></span></label>
                                 <input type="email" class="form-control" id="emailCliente" name="emailCliente"
-                                    placeholder="you@example.com">
+                                    th:field="*{correo}" placeholder="you@example.com">
                                 <div class="invalid-feedback">
                                     Por favor ingrese un correo electrónico válido.
                                 </div>
@@ -102,29 +102,17 @@
                             <div class="col-sm-6">
                                 <label for="celularCliente" class="form-label">Celular <span
                                         class="text-body-secondary"></span></label>
-                                <input type="email" class="form-control" id="celularCliente" name="celularCliente"
-                                    placeholder="87506986">
+                                <input type="number" class="form-control" id="celularCliente" name="celularCliente"
+                                    th:field="*{celular}" placeholder="87506986">
                                 <div class="invalid-feedback">
                                     Por favor ingrese un número celular válido.
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
-                                <label for="usernameCliente" class="form-label">Username</label>
-                                <div class="input-group has-validation">
-                                    <span class="input-group-text">@</span>
-                                    <input type="text" class="form-control" id="usernameCliente" name="usernameCliente"
-                                        placeholder="username" required>
-                                    <div class="invalid-feedback">
-                                        El username es requerido.
-                                    </div>
-                                </div>
-                            </div>
-
-                            
                             <div class="col-sm-4">
                                 <label for="provincias" class="form-label">Provincia</label>
-                                <select id="provincias" name="provinciaCliente" class="form-select" required>
+                                <select id="provincias" name="provinciaCliente" class="form-select"
+                                    th:field="*{provincia}" required>
                                     <option value="">Seleccione una provincia</option>
                                 </select>
                                 <div class="invalid-feedback">Seleccione una provincia.</div>
@@ -132,7 +120,8 @@
 
                             <div class="col-sm-4">
                                 <label for="cantones" class="form-label">Cantón</label>
-                                <select id="cantones" name="cantonCliente" class="form-select" disabled required>
+                                <select id="cantones" name="cantonCliente" class="form-select" th:field="*{canton}"
+                                    disabled required>
                                     <option value="">Seleccione un cantón</option>
                                 </select>
                                 <div class="invalid-feedback">Seleccione un cantón.</div>
@@ -140,7 +129,8 @@
 
                             <div class="col-sm-4">
                                 <label for="distritos" class="form-label">Distrito</label>
-                                <select id="distritos" name="distritoCliente" class="form-select" disabled required>
+                                <select id="distritos" name="distritoCliente" class="form-select" th:field="*{distrito}"
+                                    disabled required>
                                     <option value="">Seleccione un distrito</option>
                                 </select>
                                 <div class="invalid-feedback">Seleccione un distrito.</div>
@@ -149,16 +139,9 @@
                             <div class="col-sm-12">
                                 <label for="direccionCliente" class="form-label">Dirección exacta</label>
                                 <input type="text" class="form-control" id="direccionCliente" name="direccionCliente"
-                                    placeholder="Ejemplo: 300m norte de la iglesia">
+                                    th:field="*{direccionExacta}" placeholder="Ejemplo: 300m norte de la iglesia">
                             </div>
-                            <hr>
-                            <section>
-                                <h5>Registro de Mascotas</h5>
-                                <div id="mascotas-container">
-                                </div>
-                                <button type="button" id="agregar-mascota" class="btn btn-secondary">Agregar otra
-                                    mascota</button>
-                            </section>
+
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -166,100 +149,12 @@
             </div>
         </div>
     </div>
-    <template id="mascota-template">
-        <div class="mascota-form p-3 mb-3 rounded">
-            <div class="row g-3">
-                <div class="col-sm-4">
-                    <label for="tipoMascota" class="form-label">Tipo de mascota</label>
-                    <select class="form-select" name="tipoMascota[]" required>
-                        <option value="">Seleccione</option>
-                        <option value="Perro">Perro</option>
-                        <option value="Gato">Gato</option>
-                        <option value="Ave">Ave</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                    <div class="invalid-feedback">Seleccione un tipo de mascota.</div>
 
-                </div>
-                <div class="col-sm-4">
-                    <label for="nombreMascota" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombreMascota[]" placeholder="Firulais" required>
-                    <div class="invalid-feedback">Ingrese el nombre de la mascota.</div>
-                </div>
-                <div class="col-sm-2">
-                    <label for="annoMascota" class="form-label">Año</label>
-                    <input type="number" class="form-control" name="edadMascota[]" placeholder="0" min="0" required>
-                    <div class="invalid-feedback">Ingrese la edad de la mascota.</div>
-                </div>
-                <div class="col-sm-2">
-                    <label for="mesesMascota" class="form-label">meses</label>
-                    <input type="number" class="form-control" name="edadMascota[]" placeholder="0" min="0" required>
-                    <div class="invalid-feedback">Ingrese la edad de la mascota.</div>
-                </div>
-                <div class="col-sm-4">
-                    <label for="razaMascota" class="form-label">Raza</label>
-                    <input type="text" class="form-control" name="razaMascota[]" placeholder="Labrador" required>
-                    <div class="invalid-feedback">Ingrese la raza de la mascota.</div>
-                </div>
-                <div class="col-sm-4">
-                    <label for="pesoMascota" class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.1" class="form-control" name="pesoMascota[]" placeholder="20.5"
-                        required>
-                    <div class="invalid-feedback">Ingrese el peso de la mascota.</div>
-                </div>
-                <div class="col-sm-4">
-                    <label for="tamañoMascota" class="form-label">Tamaño</label>
-                    <select class="form-select" name="tipoMascota[]" required>
-                        <option value="">Seleccione</option>
-                        <option value="Grande">Grande</option>
-                        <option value="Mediano">Mediano</option>
-                        <option value="Pequeño">Pequeño</option>
-                        <option value="Tacita">Tacita</option>
-                    </select>
-                    <div class="invalid-feedback">Ingrese el tamaño de la mascota.</div>
-                </div>
-            </div>
-        </div>
-    </template>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const mascotaContainer = document.getElementById('mascotas-container');
-            const mascotaTemplate = document.getElementById('mascota-template');
-            const agregarMascotaBtn = document.getElementById('agregar-mascota');
-            const registroForm = document.getElementById('registroForm');
-
-            agregarMascotaBtn.addEventListener('click', () => {
-                const nuevaMascota = mascotaTemplate.content.cloneNode(true);
-                mascotaContainer.appendChild(nuevaMascota);
-                const botonesEliminar = mascotaContainer.querySelectorAll('.eliminar-mascota');
-                botonesEliminar.forEach(boton => {
-                    boton.addEventListener('click', (event) => {
-                        event.preventDefault(); // Prevenir el comportamiento predeterminado del botón
-                        event.target.closest('.mascota-form').remove();
-                        // Recalcular la validación del formulario después de eliminar una mascota
-                        registroForm.checkValidity();
-                    });
-                });
-                registroForm.checkValidity();//valida el formulario al agregar una mascota
-            });
-
-            // Agregar la primera mascota al cargar la página
-            agregarMascotaBtn.click();
-
-            // Validar que al menos haya una mascota
-            registroForm.addEventListener('submit', (event) => {
-                if (mascotaContainer.children.length === 0) {
-                    event.preventDefault();
-                    alert('Debe registrar al menos una mascota.');
-                }
-                if (!registroForm.checkValidity()) {
-                    event.preventDefault(); // Evita que se envíe el formulario si no es válido
-                    registroForm.classList.add('was-validated'); // Muestra los mensajes de validación
-                }
-            });
 
             // URLs base de la API
             const API_BASE = 'https://ubicaciones.paginasweb.cr';

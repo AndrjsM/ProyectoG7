@@ -12,9 +12,4 @@ public class IndexController {
         return "index";
     }
     
-    @RequestMapping("/registro")
-    public String pacientesPage(Model model) {
-        model.addAttribute("attribute", "value");
-        return "registro/registro";
-    } 
 }
